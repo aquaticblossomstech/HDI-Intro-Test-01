@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#07583f">
+<title>Bring Me Something — Human Director of Intelligence</title>
+<meta name="description" content="Bring a question, an idea, or a pile of material. Prepare a short sketch and send it to start a conversation about useful next steps.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bring Me Something — Human Director of Intelligence">
+<meta property="og:description" content="A question, an idea, a pile of material. You don’t have to arrive with the whole plan.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 6v11c0 8-6 13-13 15C9 30 3 25 3 17V6Z' fill='%2307583f'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f0f2ec;--paper:#fffefa;--ink:#14201b;--muted:#53645b;--line:#c8d2ca;
+  --green:#07583f;--green-deep:#043f30;--yellow:#ffd23f;--yellow-ink:#171b17;
+  --soft:#e2ece3;--focus:#246bdf;--shadow:0 8px 24px rgba(14,39,28,.09);
+  --mark:#07583f;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#101815;--paper:#18221d;--ink:#edf3ed;--muted:#b1c0b5;--line:#3b4b40;--soft:#20372c;--shadow:0 8px 24px rgba(0,0,0,.2);--mark:#79d4ab}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--font)}
+button,input,textarea{font:inherit}
+button{touch-action:manipulation}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--paper);padding:10px;z-index:10}
+.skip:focus{left:8px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.site-head{display:flex;align-items:center;gap:13px;padding:18px 0 20px}
+.brand-shield{width:44px;height:50px;flex:none}
+.brand-title{font-size:clamp(16px,2.3vw,21px);font-weight:850;line-height:1.1;letter-spacing:-.025em}
+.brand-sub{color:var(--muted);font-size:14px;margin-top:3px}
+.head-right{margin-left:auto;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.09em;text-align:right}
+.hero{
+  position:relative;overflow:hidden;background:var(--green);color:#fff;border:3px solid #fff;
+  outline:3px solid var(--green);border-radius:20px;padding:clamp(22px,5vw,46px);
+  box-shadow:0 10px 0 rgba(3,44,31,.22),var(--shadow);isolation:isolate
+}
+.hero:before{content:"";position:absolute;inset:7px;border:1.5px solid rgba(255,255,255,.75);border-radius:13px;pointer-events:none;z-index:-1}
+.hero-art{position:absolute;right:-12px;bottom:-22px;width:min(43%,390px);height:auto;opacity:.46;z-index:-1;pointer-events:none}
+.kicker{display:inline-flex;align-items:center;background:var(--yellow);color:var(--yellow-ink);font-size:12px;font-weight:900;letter-spacing:.09em;padding:6px 10px;border-radius:5px}
+h1{font-size:clamp(38px,8vw,76px);line-height:.99;letter-spacing:-.055em;margin:15px 0 16px;max-width:850px}
+.hero p{font-size:clamp(16px,2.1vw,20px);max-width:700px;margin:0 0 10px}
+.hero .promise{font-weight:850;color:var(--yellow);margin-top:12px}
+.hero .hero-link{font-size:15px;margin-top:14px}
+.hero .hero-link a{color:var(--yellow);font-weight:800;text-underline-offset:3px}
+section{margin-top:38px}
+.section-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:15px}
+.section-head h2{font-size:clamp(22px,4vw,30px);line-height:1.1;letter-spacing:-.035em;margin:0}
+.section-head p{margin:5px 0 0;color:var(--muted)}
+.examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.example{display:flex;gap:12px;align-items:center;text-align:left;min-height:104px;padding:16px;background:var(--paper);color:var(--ink);border:1.5px solid var(--line);border-radius:11px;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.02);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.example:hover{transform:translateY(-2px);border-color:var(--green);box-shadow:var(--shadow)}
+.example svg{width:30px;height:30px;flex:none;color:var(--mark)}
+.example b{display:block;font-weight:850;margin-bottom:3px}
+.example span{font-size:14px;line-height:1.4;color:var(--muted)}
+.workspace{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);gap:24px;align-items:start}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(17px,3vw,28px);min-width:0}
+.panel-head{margin-bottom:22px}
+.panel-head h2{font-size:clamp(24px,4vw,32px);letter-spacing:-.04em;line-height:1.08;margin:10px 0 6px}
+.panel-head p{color:var(--muted);margin:0}
+fieldset{border:0;padding:0;margin:0 0 23px;min-width:0}
+legend,.field-label{font-weight:850;display:block;margin-bottom:7px;line-height:1.35}
+.step{display:inline-block;margin-right:7px;color:var(--mark);font-weight:950}
+.sub-label{font-weight:450;color:var(--muted);font-size:14px}
+.types{display:flex;flex-wrap:wrap;gap:7px}
+.chip,.status-chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 12px;border-radius:999px;min-height:42px;cursor:pointer;font-size:14px;font-weight:700;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.chip[aria-pressed="true"],.status-chip[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+textarea,input[type=text],input[type=email]{width:100%;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:12px 13px;min-height:48px}
+textarea{min-height:92px;resize:vertical;line-height:1.5}
+textarea::placeholder,input::placeholder{color:var(--muted);opacity:.88}
+textarea:focus,input:focus{outline:3px solid color-mix(in srgb,var(--green) 25%,transparent);border-color:var(--green)}
+.field-help{font-size:13px;color:var(--muted);margin:5px 0 0}
+details.more{margin:0 0 23px;border:1.5px dashed var(--line);border-radius:11px;padding:0 15px}
+details.more[open]{padding-bottom:6px}
+details.more summary{cursor:pointer;font-weight:850;min-height:48px;padding:13px 0;list-style:none;display:flex;align-items:center;gap:9px}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";color:var(--mark);font-weight:950;font-size:22px;line-height:1;width:14px}
+details.more[open] summary::before{content:"\2013"}
+.counter{text-align:right;color:var(--muted);font-size:12px;margin-top:3px;font-variant-numeric:tabular-nums}
+.status-options{display:flex;flex-wrap:wrap;gap:7px}
+.status-explain{background:var(--soft);border-radius:8px;padding:10px 12px;margin-top:10px;font-size:13px;color:var(--muted)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.preview-column{position:sticky;top:16px;display:grid;gap:13px}
+.live-card{background:var(--green-deep);color:#fff;border:3px solid #fff;outline:3px solid var(--green);border-radius:15px;padding:clamp(18px,3vw,25px);box-shadow:0 7px 0 rgba(0,0,0,.15)}
+.live-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}
+.live-card h3{font-size:clamp(24px,4vw,32px);line-height:1.08;letter-spacing:-.04em;margin:0 0 20px;overflow-wrap:anywhere}
+.live-note{font-size:12px;color:#d4e4d8}
+.live-card dl{margin:0}
+.live-card dt{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--yellow);text-transform:uppercase;margin-top:15px}
+.live-card dd{margin:3px 0 0;line-height:1.45;overflow-wrap:anywhere;white-space:pre-wrap}
+.live-card .rule{border:0;border-top:1px solid rgba(255,255,255,.28);margin:17px 0 0}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.btn{min-height:49px;border-radius:9px;border:2px solid var(--green);padding:11px 13px;font-weight:850;cursor:pointer;background:var(--yellow);color:var(--yellow-ink);transition:transform .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(0,0,0,.12)}
+.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+.status-message{min-height:24px;margin:0;font-size:13px;color:var(--muted)}
+.info-box{background:var(--soft);border-radius:11px;padding:15px;display:flex;gap:11px}
+.info-box svg{width:23px;height:23px;flex:none;color:var(--mark)}
+.info-box h3{font-size:15px;margin:0 0 4px}
+.info-box p{font-size:14px;margin:0;color:var(--muted)}
+.info-box ol{margin:8px 0 0;padding-left:21px;font-size:14px}
+.info-box li{margin:5px 0}
+.process{background:var(--green-deep);color:#fff;border-radius:15px;padding:clamp(20px,4vw,30px);margin-top:40px}
+.process h2{font-size:clamp(23px,4vw,30px);margin:10px 0 5px;letter-spacing:-.035em}
+.process-intro{color:#d5e5dc;margin:0 0 20px}
+.process-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.process-step{border-top:1px solid rgba(255,255,255,.32);padding-top:12px}
+.num{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:50%;background:var(--yellow);color:#111;font-weight:950;margin-bottom:9px}
+.process-step b{display:block;margin-bottom:5px}
+.process-step p{font-size:13px;line-height:1.45;color:#d5e5dc;margin:0}
+footer{padding:23px 0 30px;display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--muted);font-size:13px}
+footer strong{color:var(--ink)}
+.footer-links{display:flex;gap:15px;flex-wrap:wrap}
+footer a{text-underline-offset:3px}
+@keyframes arrive{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@keyframes update-glow{0%{box-shadow:0 7px 0 rgba(0,0,0,.15),0 0 0 0 rgba(255,210,63,.5)}100%{box-shadow:0 7px 0 rgba(0,0,0,.15),0 0 0 0 rgba(255,210,63,0)}}
+.live-card.updated{animation:update-glow .4s ease-out}
+.example{animation:arrive .45s ease-out both}
+.example:nth-child(2){animation-delay:.06s}.example:nth-child(3){animation-delay:.12s}
+@media(max-width:760px){
+ .wrap{width:min(100% - 24px,620px)}
+ .head-right{display:none}
+ .hero{padding:26px 21px;border-radius:15px}
+ .hero-art{width:55%;opacity:.25}
+ .examples{grid-template-columns:1fr;gap:8px}
+ .example{min-height:78px;padding:12px 14px}
+ .example svg{width:27px;height:27px}
+ section{margin-top:30px}
+ .workspace{grid-template-columns:1fr;gap:16px}
+ .preview-column{position:static}
+ .panel{padding:19px}
+ .process-grid{grid-template-columns:1fr 1fr}
+ .process-step{padding-top:10px}
+ footer{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:420px){
+ .wrap{width:calc(100% - 20px)}
+ .site-head{padding:14px 0}
+ .brand-shield{width:38px;height:43px}
+ .brand-title{font-size:16px}
+ .hero{padding:24px 17px}
+ h1{font-size:clamp(36px,11vw,48px)}
+ .contact-grid,.actions{grid-template-columns:1fr}
+ .types{gap:6px}
+ .chip,.status-chip{padding:8px 10px;font-size:13px}
+ .process-grid{grid-template-columns:1fr}
+ .process-step{display:grid;grid-template-columns:35px 1fr;column-gap:8px}
+ .process-step .num{grid-row:span 2}
+ .process-step b{align-self:end}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
+body{padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.hero .flow{font-size:14px;max-width:700px;margin-top:18px;padding:11px 14px;background:rgba(255,255,255,.12);border-radius:10px}
+.outcomes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.outcome{background:var(--paper);border:1.5px solid var(--line);border-radius:11px;padding:15px 16px}
+.outcome b{display:block;font-weight:850;margin-bottom:3px}
+.outcome span{font-size:14px;line-height:1.4;color:var(--muted)}
+.form-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.preview-column{position:static}
+.live-card{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+textarea[aria-invalid="true"]{border-color:#b3261e;outline:3px solid rgba(179,38,30,.25)}
+@media(max-width:760px){.outcomes{grid-template-columns:1fr;gap:8px}.live-card{position:static;max-height:none}}
+@media(max-width:420px){.form-actions{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#sketch">Skip to the sketch form</a>
+<div class="wrap">
+  <header class="site-head">
+    <svg class="brand-shield" viewBox="0 0 44 50" role="img" aria-label="New Jersey-inspired shield">
+      <path d="M22 2 40 8v17c0 11-8 19-18 23C12 44 4 36 4 25V8Z" fill="#07583f" stroke="currentColor" stroke-width="2.3"/>
+      <path d="M22 7 35 11v14c0 8-5.5 14-13 18-7.5-4-13-10-13-18V11Z" fill="none" stroke="#fff" stroke-opacity=".65"/>
+      <text x="22" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">NJ</text>
+    </svg>
+    <div>
+      <div class="brand-title">Human Director of Intelligence</div>
+      <div class="brand-sub">Bring Me Something</div>
+    </div>
+    <div class="head-right">BETTER QUESTIONS&nbsp;&nbsp; / &nbsp;&nbsp;CLEARER THINKING&nbsp;&nbsp; / &nbsp;&nbsp;USEFUL WORK</div>
+  </header>
+
+  <main>
+  <noscript><p style="padding:16px">This form needs JavaScript. You can write instead to <a href="mailto:rahwayallday@gmail.com">rahwayallday@gmail.com</a> or DM <a href="https://www.instagram.com/SupportNJLocal/">@SupportNJLocal</a>.</p></noscript>
+    <header class="hero">
+      <span class="kicker">THE DOOR</span>
+      <h1>Bring me something</h1>
+      <p>A question. An idea. A pile of material. A project. Something you want to understand, develop, change, or make.</p>
+      <p>Research, multiple perspectives, judgment, and hands-on building — used to turn unfinished material into useful work.</p>
+      <p class="promise">You don’t have to arrive with the whole plan.</p>
+      <p>Independent research and building, based in the Rahway, NJ area.</p>
+      <p class="flow"><b>How it goes:</b> you send a sketch → I read it and suggest a next step → scope, output, fee, and timing are agreed before substantive work begins.</p>
+      <p class="hero-link">Not sure what this looks like? <a href="what-becomes-possible.html">See examples of what becomes possible</a>.</p>
+      <svg class="hero-art" viewBox="0 0 420 170" fill="none" aria-hidden="true">
+        <path d="M2 165C62 126 96 133 142 98S218 72 264 49 343 38 420 6" stroke="#fff" stroke-width="2"/>
+        <path d="M38 170C102 130 129 127 174 105S254 85 295 68 359 63 420 43" stroke="#fff" stroke-width="1.4" stroke-dasharray="7 8"/>
+        <path d="M190 170c37-43 83-65 137-69 31-2 62 6 93 20" stroke="#fff" stroke-width="2"/>
+        <path d="M249 88v-24h7V51h7v13h7v-6h6v30M287 72v-17h5v-9h6v26M317 63V40h6V29h6v34" stroke="#fff" stroke-width="1.6"/>
+      </svg>
+    </header>
+
+    <section aria-labelledby="outcomes-title">
+      <div class="section-head">
+        <span class="kicker">OUTCOMES</span>
+        <div><h2 id="outcomes-title">What you might walk away with</h2><p>Examples of possible deliverables. Not a menu, and not a guarantee.</p></div>
+      </div>
+      <div class="outcomes">
+        <div class="outcome"><b>A research brief</b><span>Competing claims sorted out, with sources and clear limits.</span></div>
+        <div class="outcome"><b>A usable direction</b><span>Scattered notes and drafts turned into a structure you can act on.</span></div>
+        <div class="outcome"><b>A strategic read</b><span>An assessment that surfaces possibilities you hadn’t considered.</span></div>
+        <div class="outcome"><b>A working first version</b><span>A publication, prototype, or digital experience built from a rough idea.</span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="examples-title">
+      <div class="section-head">
+        <span class="kicker">EXAMPLES</span>
+        <div><h2 id="examples-title">Ordinary starting points</h2><p>Choose an example to pre-fill the form. Rough is fine.</p></div>
+      </div>
+      <div class="examples">
+        <button class="example" type="button" data-example="material">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M3 9a3 3 0 0 1 3-3h8l3 4h9a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg>
+          <span><b>Messy folder</b>Forty pages of notes, transcripts, and half-finished outlines.</span>
+        </button>
+        <button class="example" type="button" data-example="question">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="currentColor" stroke-width="2.2"/><path d="M11.5 11.5a4.7 4.7 0 0 1 9 .8c0 3.1-4.5 3.8-4.5 6.8M16 23.5v.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span><b>Open question</b>A comparison I can’t resolve on my own.</span>
+        </button>
+        <button class="example" type="button" data-example="idea">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3a9 9 0 0 0-5.6 16.1c1.4 1.1 2.1 2.5 2.1 4.1h7c0-1.6.7-3 2.1-4.1A9 9 0 0 0 16 3Z" stroke="currentColor" stroke-width="2.2"/><path d="M12.5 27h7M13.5 30h5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <span><b>Rough idea</b>Something that hasn’t taken shape yet.</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="sketch" aria-labelledby="sketch-title">
+      <div class="workspace">
+        <form class="panel" id="sketch-form" novalidate>
+          <div class="panel-head">
+            <span class="kicker">YOUR SKETCH</span>
+            <h2 id="sketch-title">What are you bringing?</h2>
+            <p>Start with what you have. Add what you hope for if you can. Everything else is optional.</p>
+          </div>
+
+          <fieldset>
+            <legend><span class="step">1.</span>What kind of thing is it?</legend>
+            <div class="types" id="types" aria-label="Choose a type">
+              <button class="chip" type="button" data-type="A question" aria-pressed="false">Question</button>
+              <button class="chip" type="button" data-type="A pile of material" aria-pressed="false">Material</button>
+              <button class="chip" type="button" data-type="An idea" aria-pressed="false">Idea</button>
+              <button class="chip" type="button" data-type="A concept" aria-pressed="false">Concept</button>
+              <button class="chip" type="button" data-type="An existing project" aria-pressed="false">Existing project</button>
+              <button class="chip" type="button" data-type="A place or organization" aria-pressed="false">Place or organization</button>
+              <button class="chip" type="button" data-type="Something already made" aria-pressed="false">Already made</button>
+              <button class="chip" type="button" data-type="Something else" aria-pressed="false">Something else</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <label class="field-label" for="what"><span class="step">2.</span>What do you have? <span class="sub-label">(the actual material or question)</span></label>
+            <p class="field-help">Long material? Link to it or summarize it. Entries are cut off at 1,000 characters.</p>
+            <textarea id="what" maxlength="1000" placeholder="Describe it in plain language. Include links or context if useful. Rough is fine."></textarea>
+            <div class="counter"><span id="what-count">0</span> / 1,000</div>
+          </fieldset>
+
+          <fieldset>
+            <label class="field-label" for="hope"><span class="step">3.</span>What do you hope happens?</label>
+            <p class="field-help">Understanding, a direction, a working version, a next step…</p>
+            <textarea id="hope" maxlength="1000" placeholder="What would be a useful outcome?"></textarea>
+            <div class="counter"><span id="hope-count">0</span> / 1,000</div>
+          </fieldset>
+
+          <fieldset>
+            <label class="field-label" for="name">Your name <span class="sub-label">(optional)</span></label>
+            <p class="field-help" style="margin-bottom:9px">Appears on the sketch as “From.” You send the sketch yourself, so replies come back through the DM or email you use.</p>
+            <input id="name" type="text" maxlength="120" autocomplete="name" placeholder="Name (optional)">
+          </fieldset>
+          <details class="more" id="more">
+            <summary>Add context <span class="sub-label">(optional — skip it if you’re unsure)</span></summary>
+            <fieldset>
+            <label class="field-label" for="unresolved">What needs to be figured out?</label>
+            <p class="field-help">What is unclear, missing, contradictory, or not yet decided?</p>
+            <textarea id="unresolved" maxlength="1000" placeholder="What do you need to know before we can decide what to make?"></textarea>
+            <div class="counter"><span id="unresolved-count">0</span> / 1,000</div>
+            </fieldset>
+            <fieldset>
+            <legend>How solid is what you have? <span class="sub-label">(optional)</span></legend>
+            <div class="status-options" id="evidence-options">
+              <button class="status-chip" type="button" data-evidence="Mostly firsthand observations" aria-pressed="false">Things I saw or heard</button>
+              <button class="status-chip" type="button" data-evidence="Mostly documented records" aria-pressed="false">Mostly documents</button>
+              <button class="status-chip" type="button" data-evidence="A mixture of records, observations, and interpretation" aria-pressed="false">Mixed</button>
+              <button class="status-chip" type="button" data-evidence="Not sure yet" aria-pressed="false">Not sure</button>
+            </div>
+            <p class="status-explain" id="evidence-help">Choose the closest fit. This is a rough starting point, not a grade.</p>
+            <input type="hidden" id="evidence" value="">
+          </fieldset>
+
+          <fieldset>
+            <label class="field-label" for="known">What is confirmed, suspected, or disputed? <span class="sub-label">(optional)</span></label>
+            <p class="field-help">Separate what you have directly observed from what you infer or have heard.</p>
+            <textarea id="known" maxlength="1000" placeholder="Known facts, assumptions, conflicting accounts, source notes, or gaps."></textarea>
+            <div class="counter"><span id="known-count">0</span> / 1,000</div>
+          </fieldset>
+          </details>
+          <div class="form-actions"><button class="btn" type="button" data-act="copy">Copy sketch</button><button class="btn secondary" type="button" data-act="email">Email it</button></div>
+          <p class="status-message" id="status-form" role="status" aria-live="polite" style="margin-top:9px">Nothing is sent from this page. Copying or emailing only prepares your sketch.</p>
+        </form>
+
+        <aside class="preview-column" aria-label="Working sketch and sharing options">
+          <div class="live-card" id="card">
+            <div class="live-top"><span class="kicker">WORKING SKETCH</span><span class="live-note">Live preview</span></div>
+            <h3 id="c-type">Something unfinished</h3>
+            <dl>
+              <dt>What you have</dt><dd id="c-what">Not filled in yet.</dd>
+              <dt>What needs figuring out</dt><dd id="c-unresolved">Not filled in yet.</dd>
+              <dt>What you hope for</dt><dd id="c-hope">Not filled in yet.</dd>
+              <dt>How solid it is</dt><dd id="c-evidence">Not specified.</dd>
+              <dt>Confirmed / suspected / disputed</dt><dd id="c-known">Not specified.</dd>
+            </dl>
+            <hr class="rule">
+            <dl><dt>From</dt><dd id="c-from">Anonymous sketch</dd></dl>
+          </div>
+          <div class="actions" style="grid-template-columns:1fr"><button class="btn secondary" type="button" id="download">Download .txt</button></div>
+          <details class="more" id="manual-wrap" style="margin:0"><summary>Copy didn’t work? Select the text here</summary><textarea id="manual" readonly rows="8" aria-label="Sketch text" style="margin-bottom:12px;font-size:13px"></textarea></details>
+          <p class="status-message" id="status">Ready to prepare a sketch. Nothing has been sent.</p>
+          <div class="info-box">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="2"/><path d="M12 10.5v6M12 7.5v.2" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>
+            <div><h3>How to send your sketch</h3><p>This form prepares a message. It does not send it. You choose whether to share it by email or DM.</p>
+              <ol>
+                <li>Tap Copy sketch, or Download .txt. In-app browsers can block both, so use the text box above if needed.</li>
+                <li>Send it in a direct message to <a href="https://www.instagram.com/SupportNJLocal/" target="_blank" rel="noopener noreferrer">@SupportNJLocal</a>.</li>
+                <li>Or tap Email it, or write to <a href="mailto:rahwayallday@gmail.com">rahwayallday@gmail.com</a>.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="info-box">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="2"/><path d="M12 14v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <!-- NOTE: the sentence below is only true while this page has no analytics, tracking snippet, or form backend. Update it if any are added. -->
+            <div><h3>Keep sensitive material out</h3><p>This page does not transmit your entries to a server. Your browser holds the form values while the page is open. Do not include passwords, private records, confidential client information, or sensitive personal details in a sketch you plan to share.</p></div>
+          </div>
+          <div class="info-box">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18 9 12l4 3 8-10M15 5h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><h3>Discovery can stay open. The agreement should not.</h3><p>If the work is a fit, purpose, scope, output, fee, and timing are agreed before substantive work begins.</p></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="not-title">
+      <div class="section-head">
+        <span class="kicker">LIMITS</span>
+        <div><h2 id="not-title">What this isn&rsquo;t</h2><p>So expectations are clear from the start.</p></div>
+      </div>
+      <div class="outcomes">
+        <div class="outcome"><b>Not professional advice</b><span>Legal, medical, tax, and investment questions need a licensed professional.</span></div>
+        <div class="outcome"><b>Not a guaranteed answer</b><span>If the evidence doesn&rsquo;t settle something, I&rsquo;ll say so instead of picking a side.</span></div>
+        <div class="outcome"><b>Not a place for private records</b><span>Keep passwords, client files, and personal details out of the sketch.</span></div>
+      </div>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <span class="kicker">WHAT HAPPENS NEXT</span>
+      <h2 id="process-title">From sketch to the right next step</h2>
+      <p class="process-intro">You bring the material. I work out what it needs and propose a path.</p>
+      <div class="process-grid">
+        <div class="process-step"><span class="num">1</span><b>Look at what you brought</b><p>Read what you brought and what is unclear, without rushing to an answer.</p></div>
+        <div class="process-step"><span class="num">2</span><b>Determine what it needs</b><p>Fact-finding, sorting out conflicting accounts, a clear summary, a design, or a build?</p></div>
+        <div class="process-step"><span class="num">3</span><b>Propose a path</b><p>Suggest an approach and what it could produce.</p></div>
+        <div class="process-step"><span class="num">4</span><b>Agree on the work</b><p>Before work begins, agree on purpose, scope, deliverable, fee, and timing.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Human Director of Intelligence</strong><br>Alongside Garden State Grid / Support NJ Local</div>
+    <div class="footer-links"><a href="what-becomes-possible.html">What becomes possible</a><a href="https://www.instagram.com/SupportNJLocal/" target="_blank" rel="noopener noreferrer">Support NJ Local ↗</a></div>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const EMAIL = "rahwayallday@gmail.com";
+  const fields = ["what","unresolved","hope","known"];
+  let selectedType = "";
+  let selectedEvidence = "";
+
+  const evidenceHelp = {
+    "Mostly firsthand observations":"What you saw or heard yourself is valuable, but it only covers who was there and when.",
+    "Mostly documented records":"Documents can confirm specific things, but they may be incomplete, out of date, or disagree with each other.",
+    "A mixture of records, observations, and interpretation":"What you saw, what is documented, and what is interpretation will be kept separate.",
+    "Not sure yet":"That is a fine starting point. It can be sorted out once the material has been looked at."
+  };
+
+  const clean = value => value.trim();
+  const fallback = value => clean(value) || "Not filled in yet.";
+
+  function sketchText(){
+    const from = clean($("name").value);
+    return [
+      "BRING ME SOMETHING — WORKING SKETCH",
+      "",
+      "Type: " + (selectedType || "Something unfinished"),
+      "",
+      "WHAT I HAVE",
+      fallback($("what").value),
+      "",
+      "WHAT NEEDS FIGURING OUT",
+      fallback($("unresolved").value),
+      "",
+      "WHAT I HOPE FOR",
+      fallback($("hope").value),
+      "",
+      "HOW SOLID IT IS",
+      selectedEvidence || "Not specified.",
+      "",
+      "CONFIRMED / SUSPECTED / DISPUTED",
+      fallback($("known").value),
+      "",
+      "From: " + (from || "Anonymous sketch"),
+      "",
+      "Note: This is an initial sketch, not a verified finding or agreed scope of work."
+    ].join("\n");
+  }
+
+  function updateCard(animate = false){
+    $("c-type").textContent = selectedType || "Something unfinished";
+    $("c-what").textContent = fallback($("what").value);
+    $("c-unresolved").textContent = fallback($("unresolved").value);
+    $("c-hope").textContent = fallback($("hope").value);
+    $("c-evidence").textContent = selectedEvidence || "Not specified.";
+    $("c-known").textContent = fallback($("known").value);
+    $("c-from").textContent = clean($("name").value) || "Anonymous sketch";
+    $("manual").value = sketchText();
+    if(animate && !window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const card = $("card");
+      card.classList.remove("updated");
+      void card.offsetWidth;
+      card.classList.add("updated");
+    }
+  }
+
+  function updateCounters(){
+    fields.forEach(id => {
+      const counter = $(id + "-count");
+      if(counter) counter.textContent = String($(id).value.length);
+    });
+  }
+
+  function setStatus(message){ $("status").textContent = message; $("status-form").textContent = message; }
+
+  document.querySelectorAll("[data-type]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedType = button.dataset.type;
+      document.querySelectorAll("[data-type]").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+      updateCard(true);
+      setStatus("Type updated in the working sketch.");
+    });
+  });
+
+  document.querySelectorAll("[data-evidence]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectedEvidence = button.dataset.evidence;
+      $("evidence").value = selectedEvidence;
+      document.querySelectorAll("[data-evidence]").forEach(b => b.setAttribute("aria-pressed", String(b === button)));
+      $("evidence-help").textContent = evidenceHelp[selectedEvidence];
+      updateCard(true);
+      setStatus("Updated. This is a rough starting point, not a grade.");
+    });
+  });
+
+  document.querySelectorAll("[data-example]").forEach(button => {
+    button.addEventListener("click", () => {
+      const examples = {
+        material: {
+          type:"A pile of material",
+          what:"I have about 40 pages of notes, transcripts, and older research. I know there’s something in here but I can’t see it clearly anymore.",
+          unresolved:"Which ideas are supported by the material, which conflict, and what remains unknown?",
+          hope:"A clear structure or brief I can actually use.",
+          evidence:"A mixture of records, observations, and interpretation"
+        },
+        question: {
+          type:"A question",
+          what:"Two local corridors feel similar on the surface but behave very differently for the people who use them. I want to understand why.",
+          unresolved:"Which conditions are genuinely comparable, and what evidence would help explain the differences?",
+          hope:"A grounded comparison with sources and clear limits.",
+          evidence:"Not sure yet"
+        },
+        idea: {
+          type:"An idea",
+          what:"A rough concept for something that would send people between two neighboring places. No design or copy yet — just the feeling that it could work.",
+          unresolved:"What would make the connection useful, understandable, and practical for people using it?",
+          hope:"A first working version people can actually try.",
+          evidence:"Not sure yet"
+        }
+      };
+      const example = examples[button.dataset.example];
+      if(fields.some(id => clean($(id).value)) && !window.confirm("Replace what you’ve typed with this example?")) return;
+      selectedType = example.type;
+      $("what").value = example.what;
+      $("unresolved").value = example.unresolved;
+      $("hope").value = example.hope;
+      $("known").value = "";
+      selectedEvidence = example.evidence;
+      $("evidence").value = selectedEvidence;
+      document.querySelectorAll("[data-type]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.type === selectedType)));
+      document.querySelectorAll("[data-evidence]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.evidence === selectedEvidence)));
+      $("evidence-help").textContent = evidenceHelp[selectedEvidence];
+      $("more").open = true;
+      updateCounters();
+      updateCard(true);
+      setStatus("Example loaded. Edit any field to make it your own.");
+      $("sketch").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+      if(window.matchMedia("(pointer:fine)").matches) window.setTimeout(() => $("what").focus({preventScroll:true}), 0);
+    });
+  });
+
+  [...fields,"name"].forEach(id => {
+    $(id).addEventListener("input", () => {
+      updateCounters();
+      updateCard(false);
+    });
+  });
+
+  function ready(){
+    if(clean($("what").value)) return true;
+    const w = $("what");
+    w.setAttribute("aria-invalid","true");
+    w.focus();
+    setStatus("Add what you have (step 2) first. A sketch needs at least that.");
+    return false;
+  }
+  $("what").addEventListener("input", () => $("what").removeAttribute("aria-invalid"));
+
+  async function copyText(value){
+    try{
+      if(navigator.clipboard && window.isSecureContext){ await navigator.clipboard.writeText(value); return true; }
+      const h = document.createElement("textarea");
+      h.value = value; h.setAttribute("readonly",""); h.style.cssText = "position:fixed;opacity:0";
+      document.body.appendChild(h); h.select();
+      const ok = document.execCommand("copy");
+      h.remove();
+      return ok;
+    }catch(error){ return false; }
+  }
+
+  function manualFallback(){
+    const d = $("manual-wrap"), m = $("manual");
+    d.open = true;
+    d.scrollIntoView({block:"center"});
+    m.focus(); m.select();
+  }
+
+  document.querySelectorAll('[data-act="copy"]').forEach(btn => btn.addEventListener("click", async () => {
+    if(!ready()) return;
+    if(await copyText(sketchText())){
+      setStatus("Sketch copied. Nothing has been sent. Paste it into a DM or an email.");
+    }else{
+      manualFallback();
+      setStatus("Copy was blocked here. The text is selected in the box. Copy it manually.");
+    }
+  }));
+
+  document.querySelectorAll('[data-act="email"]').forEach(btn => btn.addEventListener("click", async () => {
+    if(!ready()) return;
+    const text = sketchText();
+    const base = "mailto:" + EMAIL + "?subject=" + encodeURIComponent("Bring Me Something — sketch") + "&body=";
+    const full = base + encodeURIComponent(text);
+    if(full.length <= 1900){
+      window.location.href = full;
+      setStatus("Opening your email app. Nothing is sent until you press send there.");
+    }else{
+      const ok = await copyText(text);
+      window.location.href = base + encodeURIComponent("Paste your sketch here.");
+      if(ok){
+        setStatus("Your sketch is long, so it was copied instead. Paste it into the email.");
+      }else{
+        manualFallback();
+        setStatus("Your sketch is too long to prefill. Copy it from the box and paste it into the email.");
+      }
+    }
+  }));
+
+  $("download").addEventListener("click", () => {
+    if(!ready()) return;
+    const blob = new Blob([sketchText()], {type:"text/plain;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "bring-me-something-sketch.txt";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    setStatus("Download started. If no file appears, your browser blocked it. Use Copy sketch or the text box instead.");
+  });
+
+  try{
+    const q = new URLSearchParams(window.location.search);
+    const t = q.get("type");
+    document.querySelectorAll("[data-type]").forEach(b => { if(b.dataset.type === t){ selectedType = t; b.setAttribute("aria-pressed","true"); } });
+    ["what","hope"].forEach(id => { const v = q.get(id); if(v) $(id).value = v.slice(0,1000); });
+  }catch(e){}
+  updateCounters();
+  updateCard(false);
+})();
+</script>
+</body>
+</html>

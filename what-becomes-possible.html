@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#07583f">
+<title>What Becomes Possible — Human Director of Intelligence</title>
+<meta name="description" content="Constructed examples of how unfinished material becomes useful work: what came in, what was done, what emerged, and what is still open.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What Becomes Possible — Human Director of Intelligence">
+<meta property="og:description" content="Four-part examples of unfinished material turned into useful work, each ending with what is still open.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 6v11c0 8-6 13-13 15C9 30 3 25 3 17V6Z' fill='%2307583f'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#f0f2ec;--paper:#fffefa;--ink:#14201b;--muted:#53645b;--line:#c8d2ca;--green:#07583f;--green-deep:#043f30;--yellow:#ffd23f;--soft:#e2ece3;--focus:#246bdf;--mark:#07583f;--font:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#101815;--paper:#18221d;--ink:#edf3ed;--muted:#b1c0b5;--line:#3b4b40;--soft:#20372c;--mark:#79d4ab}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--font);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+a{color:inherit;text-underline-offset:3px}
+button{font:inherit;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+.site-head{display:flex;align-items:center;gap:13px;padding:18px 0 20px}
+.brand-shield{width:40px;height:46px;flex:none}
+.brand-title{font-size:clamp(16px,2.3vw,21px);font-weight:850;line-height:1.1;letter-spacing:-.025em}
+.brand-sub{color:var(--muted);font-size:14px;margin-top:3px}
+.head-link{margin-left:auto;font-weight:750;font-size:14px}
+.hero{background:var(--green);color:#fff;border:3px solid #fff;outline:3px solid var(--green);border-radius:20px;padding:clamp(22px,5vw,44px);box-shadow:0 10px 0 rgba(3,44,31,.22)}
+.kicker{display:inline-flex;background:var(--yellow);color:#171b17;font-size:12px;font-weight:900;letter-spacing:.09em;padding:6px 10px;border-radius:5px}
+h1{font-size:clamp(36px,8vw,70px);line-height:1;letter-spacing:-.05em;margin:15px 0 14px}
+.hero p{font-size:clamp(16px,2.1vw,19px);max-width:700px;margin:0 0 10px}
+.hero .note{font-size:14px;background:rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;margin-top:16px}
+section{margin-top:34px}
+h2{font-size:clamp(22px,4vw,30px);line-height:1.1;letter-spacing:-.035em;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.chip{border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 13px;border-radius:999px;min-height:44px;cursor:pointer;font-size:14px;font-weight:700}
+.chip[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:clamp(16px,3vw,24px);min-width:0}
+.card[hidden]{display:none}
+.badge{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--mark);border:1.5px solid var(--mark);border-radius:5px;padding:3px 7px}
+.card h3{font-size:21px;line-height:1.15;letter-spacing:-.03em;margin:11px 0 8px}
+dt{font-size:11px;font-weight:900;letter-spacing:.1em;color:var(--mark);text-transform:uppercase;margin-top:13px}
+dd{margin:3px 0 0}
+dl{margin:0}
+.open{background:var(--soft);border-radius:9px;padding:10px 12px;margin-top:13px}
+.open dt{margin-top:0}
+details summary{cursor:pointer;font-weight:850;min-height:44px;display:flex;align-items:center;gap:8px;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";color:var(--mark);font-size:22px;font-weight:950;width:14px}
+details[open] summary::before{content:"\2013"}
+.btn{display:inline-flex;align-items:center;min-height:48px;border-radius:9px;border:2px solid var(--green);padding:10px 15px;font-weight:850;background:var(--yellow);color:#171b17;text-decoration:none;margin-top:12px}
+.close{background:var(--green-deep);color:#fff;border-radius:15px;padding:clamp(20px,4vw,30px)}
+.close p{color:#d5e5dc;max-width:620px}
+footer{padding:23px 0 30px;display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+footer strong{color:var(--ink)}
+@media(max-width:760px){.wrap{width:calc(100% - 24px)}.list{grid-template-columns:1fr}.head-link{font-size:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="site-head">
+    <svg class="brand-shield" viewBox="0 0 44 50" role="img" aria-label="New Jersey-inspired shield"><path d="M22 2 40 8v17c0 11-8 19-18 23C12 44 4 36 4 25V8Z" fill="#07583f" stroke="currentColor" stroke-width="2.3"/><text x="22" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">NJ</text></svg>
+    <div><div class="brand-title">Human Director of Intelligence</div><div class="brand-sub">What Becomes Possible</div></div>
+    <a class="head-link" data-intake href="index.html">Bring me something</a>
+  </header>
+  <main>
+    <div class="hero">
+      <span class="kicker">THE ROOM</span>
+      <h1>What becomes possible</h1>
+      <p>Unfinished material, turned into something useful. Each example shows what came in, what was done, what emerged, and what is still open.</p>
+      <p>Independent research and building, based in the Rahway, NJ area.</p>
+      <p class="note"><b>Read this first:</b> every example below is constructed to show the shape of the work. None is a client result. Real, permissioned work will replace them as it exists.</p>
+    </div>
+
+    <section aria-labelledby="pick">
+      <h2 id="pick">Start from where you are</h2>
+      <p class="sub">Pick the closest fit. These are entry points, not separate services.</p>
+      <div class="chips" id="chips">
+        <button class="chip" type="button" data-lane="all" aria-pressed="true">All examples</button>
+        <button class="chip" type="button" data-lane="problem" aria-pressed="false">I have a problem to solve</button>
+        <button class="chip" type="button" data-lane="develop" aria-pressed="false">I have something to develop</button>
+        <button class="chip" type="button" data-lane="ongoing" aria-pressed="false">I need ongoing intelligence</button>
+      </div>
+      <div class="list" id="list"></div>
+      <noscript><p class="sub">The examples need JavaScript to show. You can still <a href="index.html#sketch">bring me something</a> directly, or write to <a href="mailto:rahwayallday@gmail.com">rahwayallday@gmail.com</a>.</p></noscript>
+      <p class="sub" id="count" role="status" aria-live="polite" style="margin-top:14px"></p>
+    </section>
+
+    <section class="close" aria-labelledby="door">
+      <h2 id="door">Bring what you have</h2>
+      <p>You don’t need a polished brief. A rough sketch is enough, and nothing is sent until you send it yourself.</p>
+      <a class="btn" data-intake href="index.html#sketch">Prepare a sketch</a>
+    </section>
+  </main>
+  <footer><div><strong>Human Director of Intelligence</strong><br>Alongside Garden State Grid / Support NJ Local</div></footer>
+</div>
+<script>
+(() => {
+  "use strict";
+  const INTAKE = "index.html";
+  const EX = [
+    {lane:"problem", title:"Three sources disagree. What can actually be claimed?",
+     came:"A press release, a council memo, and a shopkeeper’s account give three different answers on whether foot traffic near a transit stop rose after a redevelopment.",
+     work:"Each claim traced to its origin and date, checked against what that source could actually know, then sorted into confirmed, disputed, and unproven.",
+     out:"A two-page brief: what can be said with confidence, what cannot, and the single number that would settle the argument.",
+     open:"The press release’s figure has no stated method. The brief says so instead of picking a side.",
+     type:"A question", what:"I have conflicting accounts of something and need to know what can actually be claimed. ", hope:"A defensible brief that states its limits."},
+    {lane:"problem", title:"A sensible plan, attacked before it costs money",
+     came:"A plan to grow a small business by opening a second location.",
+     work:"Independent reviews went after the weakest assumptions: whether demand transfers, whose time it takes, how long the cash lasts.",
+     out:"A revised plan that tests demand with a short pop-up first, shown beside the original with the objection that changed it.",
+     open:"Whether demand would transfer is still untested. The revision names the cheapest way to test it.",
+     type:"An existing project", what:"I have a plan I’m about to commit to and want it challenged before I do. ", hope:"The strongest objections, and a revised version that survives them."},
+    {lane:"develop", title:"A paragraph becomes a page people can use",
+     came:"One paragraph describing a self-guided walk between two nearby places.",
+     work:"Turned into a single-file interactive page with a route, stops, and an “open now” view, with each design decision recorded.",
+     out:"A page that opens on any phone with nothing to install, ready to try with real people.",
+     open:"Whether people follow the route unprompted is unknown until someone walks it.",
+     type:"An idea", what:"I have a rough idea and no design or copy yet. ", hope:"A first working version people can try."},
+    {lane:"develop", title:"Forty pages of notes, one direction",
+     came:"Notes, transcripts, and half-finished outlines accumulated over a year.",
+     work:"Everything read, claims tagged by how well they are supported, and contradictions between notes mapped.",
+     out:"A one-page structure with three threads worth pursuing and two to drop.",
+     open:"Two contradictions cannot be settled from the material. They are listed as questions for the original source.",
+     type:"A pile of material", what:"I have a lot of notes and older research and can’t see the shape of it anymore. ", hope:"A clear structure or brief I can use."},
+    {lane:"problem", title:"Four things studied separately, read together",
+     came:"A café, a rail line, a downtown, and the neighborhood around them, each examined in isolation.",
+     work:"Timetables compared with opening hours, walking patterns with where people stop, and what changed when.",
+     out:"A single read of how the pieces affect each other, with a source behind every claim.",
+     open:"The observations are a handful of visits, not a count. The read marks which statements rest on them.",
+     type:"A place or organization", what:"I want to understand how a place, a business, and the people around them connect. ", hope:"A grounded read with sources and clear limits."},
+    {lane:"ongoing", title:"An organization that stops starting from zero",
+     came:"A small organization with years of documents and decisions, and no shared memory of why anything was decided.",
+     work:"A maintained record of claims, sources, decisions, and open questions, each dated and sourced, with a review rhythm agreed up front.",
+     out:"The ability to ask “what do we believe about this, and why?” and get an answer that shows its sources and its age.",
+     open:"It is only as good as the upkeep. Every entry shows when it was last checked, and ongoing work is scoped case by case.",
+     type:"A place or organization", what:"I need ongoing research and a record that builds up over time instead of starting over. ", hope:"A maintained body of evidence I can keep asking questions of."}
+  ];
+  const list = document.getElementById("list"), count = document.getElementById("count");
+  EX.forEach(e => {
+    const href = INTAKE + "?type=" + encodeURIComponent(e.type) + "&what=" + encodeURIComponent(e.what) + "&hope=" + encodeURIComponent(e.hope) + "#sketch";
+    const card = document.createElement("article");
+    card.className = "card"; card.dataset.lane = e.lane;
+    card.innerHTML = '<span class="badge">CONSTRUCTED EXAMPLE</span><h3></h3><dl><dt>What came in</dt><dd class="c"></dd></dl>' +
+      '<details><summary>See the work</summary><dl><dt>The work</dt><dd class="w"></dd><dt>What emerged</dt><dd class="o"></dd></dl></details>' +
+      '<div class="open"><dl><dt>What’s still open</dt><dd class="p"></dd></dl></div><a class="btn" href="">Start from this</a>';
+    card.querySelector("h3").textContent = e.title;
+    card.querySelector(".c").textContent = e.came;
+    card.querySelector(".w").textContent = e.work;
+    card.querySelector(".o").textContent = e.out;
+    card.querySelector(".p").textContent = e.open;
+    card.querySelector(".btn").href = href;
+    list.appendChild(card);
+  });
+  const cards = [...list.children];
+  function show(lane){
+    let n = 0;
+    cards.forEach(c => { const v = lane === "all" || c.dataset.lane === lane; c.hidden = !v; if(v) n++; });
+    count.textContent = "Showing " + n + " of " + cards.length + " examples.";
+  }
+  // Scoped to the filter buttons only. Cards also carry data-lane, so an unscoped selector would catch them.
+  const filterButtons = document.querySelectorAll("#chips [data-lane]");
+  filterButtons.forEach(b => b.addEventListener("click", () => {
+    filterButtons.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    show(b.dataset.lane);
+  }));
+  document.querySelectorAll("[data-intake]").forEach(a => { a.href = INTAKE + (a.getAttribute("href").includes("#") ? "#sketch" : ""); });
+  show("all");
+})();
+</script>
+</body>
+</html>
